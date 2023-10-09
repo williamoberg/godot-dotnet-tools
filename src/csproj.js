@@ -1,11 +1,11 @@
 const vscode = require('vscode');
 const fs = require('fs');
-const shared = require('./shared');
 const path = require('path');
+const files = require('./files');
 
 const propertyName = "CodeAnalysisRuleSet"
 
-function updateCsproj() {
+function update() {
     const csprojFile = findCsprojFile();
 
     if (csprojFile == null) {
@@ -13,44 +13,52 @@ function updateCsproj() {
         return;
     }
 
+    const rulesetPath = files.addRuleset();
+
+    if (rulesetPath == null) {
+        return;
+    }
+
     try {
         // Read the content of the .csproj file as a string
         let xmlContent = fs.readFileSync(csprojFile, 'utf-8');
 
+        // Find the check if ruleset already exists
+        const codeAnalysisRegex = /<CodeAnalysisRuleSet>.*<\/CodeAnalysisRuleSet>/;
+        const aMatch = xmlContent.match(codeAnalysisRegex);
+        if (aMatch) {
+            return;
+        }
+
         // Find the TargetFramework line
         const targetFrameworkRegex = /<TargetFramework>.*<\/TargetFramework>/;
-        const match = xmlContent.match(targetFrameworkRegex);
+        const fMatch = xmlContent.match(targetFrameworkRegex);
 
-        if (match) {
+        if (fMatch) {
             // Duplicate the entire TargetFramework line
-            const duplicatedLine = match[0];
+            const duplicatedLine = fMatch[0];
 
             // Replace the new property in the duplicated line
-            const newPropertyLine = `    <${propertyName}>${shared.rulesetPath}</${propertyName}>`;
+            const newPropertyLine = `    <${propertyName}>${rulesetPath}</${propertyName}>`;
             const updatedLine = duplicatedLine.replace(/<\/TargetFramework>/, `</TargetFramework>\n${newPropertyLine}`);
 
             // Replace the original TargetFramework line with the updated line
             xmlContent = xmlContent.replace(targetFrameworkRegex, updatedLine);
         } else {
-            console.error('Error: TargetFramework line not found in .csproj file.');
+            console.error('Error: unexpected .csproj file formatting');
             return;
         }
 
         // Write the updated XML back to the file
         fs.writeFileSync(csprojFile, xmlContent, 'utf-8');
-        console.log(`Added line to ${csprojFile}`);
-    } catch (err) {
+    }
+    catch (err) {
         console.error('Error updating .csproj file:', err);
     }
 }
 
 function findCsprojFile() {
     const workspaceFolders = vscode.workspace.workspaceFolders;
-
-    if (!workspaceFolders) {
-        vscode.window.showErrorMessage('No workspace opened.');
-        return;
-    }
 
     for (const folder of workspaceFolders) {
         const csprojFile = findFileWithExtension(folder.uri.fsPath, '.csproj');
@@ -89,5 +97,5 @@ function findFileWithExtension(rootPath, extension) {
 }
 
 module.exports = {
-    updateCsproj,
+    update
 }

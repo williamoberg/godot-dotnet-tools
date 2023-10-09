@@ -14,11 +14,28 @@
   "contributes": {
     "commands": [
       {
-        "command": "godot.tools.generate",
+        "command": "godot-dotnet-tools.generate",
         "title": "Generate files for Godot .NET project",
         "category": "Godot"
       }
-    ]
+    ],
+    "configuration":{
+      "godot-dotnet-tools.genarateTasksFile": {
+        "type": "boolean",
+        "default": true,
+        "description": "tasks.json file will be generated when true."
+      },
+      "godot-dotnet-tools.generateLaunchFile": {
+        "type": "boolean",
+        "default": true,
+        "description": "launch.json file will be generated when true."
+      },
+      "godot-dotnet-tools.generateRulesetFile": {
+        "type": "boolean",
+        "default": true,
+        "description": "ruleset.xml file will be generated when true."
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",
@@ -34,8 +51,5 @@
     "glob": "^10.3.3",
     "mocha": "^10.2.0",
     "typescript": "^5.2.2"
-  },
-  "extensionDependencies": [
-    "ms-dotnettools.csharp"
-  ]
+  }
 }

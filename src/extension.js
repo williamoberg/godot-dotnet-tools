@@ -7,7 +7,7 @@ const shared = require('./shared');
  */
 function activate(context) {
 	shared.context = context;
-	commands.init();
+	commands.registerCommands();
 }
 
 function deactivate() {
