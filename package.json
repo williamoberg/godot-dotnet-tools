@@ -1,8 +1,8 @@
 {
   "name": "woberg-godot-dotnet-tools",
   "displayName": "Godot .NET Tools",
-  "description": "Generate .NET related files for your Godot project",
-  "version": "0.0.1",
+  "description": "Generate .NET-related files for your Godot project",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.83.0"
   },
@@ -15,8 +15,8 @@
     "commands": [
       {
         "command": "godot-dotnet-tools.generate",
-        "title": "Generate files for Godot .NET project",
-        "category": "Godot"
+        "title": "Generate files for Godot project",
+        "category": "Godot .NET"
       }
     ],
     "configuration":{

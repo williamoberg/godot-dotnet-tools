@@ -18,7 +18,7 @@
             "program": "{EXECUTABLE PATH}",
             "args": [],
             "cwd": "${workspaceFolder}",
-            "stopAtEntry": false,
+            "stopAtEntry": false
         }
     ]
 }
