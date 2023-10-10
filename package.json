@@ -13,8 +13,7 @@
   "bugs": {
     "url": "https://github.com/williamoberg/godot-dotnet-tools/issues"
   },
-  "license": "",
-
+  "license": "https://github.com/williamoberg/godot-dotnet-tools/blob/main/LICENCE",
   "engines": {
     "vscode": "^1.83.0"
   },
