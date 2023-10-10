@@ -4,7 +4,6 @@
   "description": "Generate .NET-related files for your Godot project",
   "version": "0.1.0",
   "publisher": "woberg",
-  "pricing": "Free",
   "icon": "images/godot-dotnet-icon.png",
   "repository": {
     "type": "git",
