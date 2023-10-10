@@ -6,15 +6,15 @@ const files = require('./files');
 const propertyName = "CodeAnalysisRuleSet"
 
 function update() {
+    // Check for existing csproj file
     const csprojFile = findCsprojFile();
-
     if (csprojFile == null) {
         console.error('No .csproj file found.')
         return;
     }
 
+    // Check for existing ruleset file
     const rulesetPath = files.addRuleset();
-
     if (rulesetPath == null) {
         return;
     }
@@ -23,7 +23,7 @@ function update() {
         // Read the content of the .csproj file as a string
         let xmlContent = fs.readFileSync(csprojFile, 'utf-8');
 
-        // Find the check if ruleset already exists
+        // Check if ruleset already exists
         const codeAnalysisRegex = /<CodeAnalysisRuleSet>.*<\/CodeAnalysisRuleSet>/;
         const aMatch = xmlContent.match(codeAnalysisRegex);
         if (aMatch) {
@@ -35,10 +35,10 @@ function update() {
         const fMatch = xmlContent.match(targetFrameworkRegex);
 
         if (fMatch) {
-            // Duplicate the entire TargetFramework line
+            // Duplicate line
             const duplicatedLine = fMatch[0];
 
-            // Replace the new property in the duplicated line
+            // Modify line
             const newPropertyLine = `    <${propertyName}>${rulesetPath}</${propertyName}>`;
             const updatedLine = duplicatedLine.replace(/<\/TargetFramework>/, `</TargetFramework>\n${newPropertyLine}`);
 
@@ -49,7 +49,7 @@ function update() {
             return;
         }
 
-        // Write the updated XML back to the file
+        // Write the updated content back to the file
         fs.writeFileSync(csprojFile, xmlContent, 'utf-8');
     }
     catch (err) {
@@ -59,15 +59,13 @@ function update() {
 
 function findCsprojFile() {
     const workspaceFolders = vscode.workspace.workspaceFolders;
-
+    // Look for csproj file in workspace folders
     for (const folder of workspaceFolders) {
         const csprojFile = findFileWithExtension(folder.uri.fsPath, '.csproj');
-
         if (csprojFile) {
             return csprojFile;
         }
     }
-
     vscode.window.showInformationMessage('No .csproj file found in the workspace.');
     return null;
 }
@@ -81,18 +79,20 @@ function findFileWithExtension(rootPath, extension) {
             const stat = fs.statSync(filePath);
 
             if (stat.isDirectory()) {
-                const result = walkSync(filePath); // Recurse into subdirectories
+                // Recurse into subdirectories
+                const result = walkSync(filePath); 
                 if (result) {
-                    return result; // Return the result if found in subdirectory
+                    // Return the result if found in subdirectory
+                    return result; 
                 }
             } else if (path.extname(name) === extension) {
-                return filePath; // Return the file path if it has the desired extension
+                // Return the file path if it has the desired extension
+                return filePath;
             }
         }
-
-        return null; // Return null if no matching file is found
+        // Return null if no matching file is found
+        return null; 
     }
-
     return walkSync(rootPath);
 }
 

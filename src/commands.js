@@ -23,21 +23,20 @@ function generateFiles() {
 
     // Add tasks file
     if (generateTasksFile == true) { files.addTasks(); }
-
     // Add launch file
     if (generateLaunchFile == true) { files.addLaunch(); }
-
     // Update csproj file
     if (generateRulesetFile == true) { csproj.update(); }
 
-    vscode.window.showInformationMessage('Project files generated');
+    vscode.window.showInformationMessage('Project files generated.');
 }
 
-function dispose() {
+function unregisterCommands() {
+    // Unregister commands
     subscription.dispose();
 }
 
 module.exports = {
     registerCommands,
-    dispose
+    unregisterCommands
 }

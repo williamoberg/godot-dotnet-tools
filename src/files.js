@@ -7,7 +7,7 @@ function addTasks() {
         const xmlFileName = path.basename(shared.tasksPath);
         const destinationPath = path.join(shared.workspacePath, '.vscode', xmlFileName);
 
-        // Read the content of the XML file
+        // Read the content of the file
         const fileContent = fs.readFileSync(shared.tasksPath, 'utf-8');
 
         // Write the content to the workspace directory
@@ -27,7 +27,7 @@ function addLaunch() {
         const fileName = path.basename(shared.launchPath);
         const destinationPath = path.join(shared.workspacePath, '.vscode', fileName);
 
-        // Read the content of the XML file
+        // Read the content of the file
         const fileContent = fs.readFileSync(shared.launchPath, 'utf-8');
 
         // Write the content to the workspace directory
@@ -47,7 +47,7 @@ function addRuleset() {
         const fileName = path.basename(shared.rulesetPath);
         const destinationPath = path.join(shared.workspacePath, '.vscode', fileName);
 
-        // Read the content of the XML file
+        // Read the content of the file
         const fileContent = fs.readFileSync(shared.rulesetPath, 'utf-8');
 
         // Write the content to the workspace directory

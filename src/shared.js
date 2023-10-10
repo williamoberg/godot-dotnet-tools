@@ -8,13 +8,14 @@ let launchPath;
 let workspacePath;
 
 function updatePaths() {
+    // Initialize asset paths
     rulesetPath = path.join(context.extensionPath, '/assets/ruleset.xml');
     tasksPath = path.join(context.extensionPath, '/assets/tasks.json');
     launchPath = path.join(context.extensionPath, '/assets/launch.json');
 
     const workspaceFolders = vscode.workspace.workspaceFolders;
     if (workspaceFolders && workspaceFolders.length > 0) {
-        // Use the first workspace folder
+        // Set root workspace folder
         workspacePath = workspaceFolders[0].uri.fsPath;
         return true;
     }

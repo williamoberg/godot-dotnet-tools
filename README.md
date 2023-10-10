@@ -43,11 +43,12 @@ Contains rules for the C# code analyzer. This is an optional file that was added
 
 In the <strong>launch.json</strong> file there is some additional configuration needed. 
 
-You will have to edit the <strong>"program"</strong> property value to the path of your Godot executable.
+You will have to edit the <code>"program"</code> property value to the path of your Godot executable.
+Simply replace <code>{EXECUTABLE PATH}</code> with the path to your Godot executable.
+
 
 ![launch.json](/images/launch.png)
 
-Simply replace <strong>{EXECUTABLE PATH}</strong> with the path to your Godot executable.
 
 ### Optional
 
@@ -83,10 +84,10 @@ There are 3 available configuration settings for the extension which enable you 
 
 - <code>"godot-dotnet-tools.generateTasksFile"</code> 
 
-- <code>godot-dotnet-tools.generateLaunchFile</code>
+- <code>"godot-dotnet-tools.generateLaunchFile"</code>
 
-- <code>godot-dotnet-tools.generateRulesetFile</code>
+- <code>"godot-dotnet-tools.generateRulesetFile"</code>
 
 All settings are set to <code>true</code> by default.
 
-To override these settings, you can add these settings to your <strong>settings.json</strong> file.
+To override these settings, you can add them to your <strong>settings.json</strong> file set them to false.

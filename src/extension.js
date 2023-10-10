@@ -7,7 +7,7 @@ function activate(context) {
 }
 
 function deactivate() {
-	commands.dispose();
+	commands.unregisterCommands();
 }
 
 module.exports = {
