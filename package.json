@@ -1,13 +1,30 @@
 {
-  "name": "woberg-godot-dotnet-tools",
+  "name": "godot-dotnet-tools",
   "displayName": "Godot .NET Tools",
   "description": "Generate .NET-related files for your Godot project",
   "version": "0.1.0",
+  "publisher": "woberg",
+  "pricing": "Free",
+  "icon": "images/godot-dotnet-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/williamoberg/godot-dotnet-tools"
+  },
+  "bugs": {
+    "url": "https://github.com/williamoberg/godot-dotnet-tools/issues"
+  },
+  "license": "",
+
   "engines": {
     "vscode": "^1.83.0"
   },
   "categories": [
     "Other"
+  ],
+  "keywords": [
+    "Godot",
+    ".NET",
+    "Debugging"
   ],
   "activationEvents": [],
   "main": "./src/extension.js",
@@ -51,5 +68,8 @@
     "glob": "^10.3.3",
     "mocha": "^10.2.0",
     "typescript": "^5.2.2"
-  }
+  },
+  "extensionDependencies": [
+    "ms-dotnettools.csharp"
+  ]
 }
