@@ -1,20 +1,20 @@
-const vscode = require('vscode');
 const fs = require('fs');
-const path = require('path');
-const files = require('./files');
+const fileProvider = require('./fileProvider');
+const fileFinder = require('./fileFinder');
+const vscode = require('vscode');
 
 const propertyName = "CodeAnalysisRuleSet"
 
 function update() {
     // Check for existing csproj file
-    const csprojFile = findCsprojFile();
+    const csprojFile = fileFinder.findCsprojFile();
     if (csprojFile == null) {
-        console.error('No .csproj file found.')
+        vscode.window.showErrorMessage('ruleset.xml was not added. No .csproj file found in current workspace.');
         return;
     }
 
     // Check for existing ruleset file
-    const rulesetPath = files.addRuleset();
+    const rulesetPath = fileProvider.addRuleset();
     if (rulesetPath == null) {
         return;
     }
@@ -57,44 +57,7 @@ function update() {
     }
 }
 
-function findCsprojFile() {
-    const workspaceFolders = vscode.workspace.workspaceFolders;
-    // Look for csproj file in workspace folders
-    for (const folder of workspaceFolders) {
-        const csprojFile = findFileWithExtension(folder.uri.fsPath, '.csproj');
-        if (csprojFile) {
-            return csprojFile;
-        }
-    }
-    vscode.window.showInformationMessage('No .csproj file found in the workspace.');
-    return null;
-}
 
-function findFileWithExtension(rootPath, extension) {
-    function walkSync(currentDirPath) {
-        const files = fs.readdirSync(currentDirPath);
-
-        for (const name of files) {
-            const filePath = path.join(currentDirPath, name);
-            const stat = fs.statSync(filePath);
-
-            if (stat.isDirectory()) {
-                // Recurse into subdirectories
-                const result = walkSync(filePath); 
-                if (result) {
-                    // Return the result if found in subdirectory
-                    return result; 
-                }
-            } else if (path.extname(name) === extension) {
-                // Return the file path if it has the desired extension
-                return filePath;
-            }
-        }
-        // Return null if no matching file is found
-        return null; 
-    }
-    return walkSync(rootPath);
-}
 
 module.exports = {
     update

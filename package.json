@@ -2,7 +2,7 @@
   "name": "godot-dotnet-tools",
   "displayName": "Godot .NET Tools",
   "description": "Generate .NET-related files for your Godot project",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "woberg",
   "icon": "images/godot-dotnet-icon.png",
   "repository": {
@@ -30,6 +30,7 @@
   ],
   "main": "./src/extension.js",
   "contributes": {
+
     "commands": [
       {
         "command": "godot-dotnet-tools.generate",
@@ -37,24 +38,29 @@
         "category": "Godot .NET"
       }
     ],
-    "configuration":{
-      "godot-dotnet-tools.genarateTasksFile": {
-        "type": "boolean",
-        "default": true,
-        "description": "tasks.json file will be generated when true."
-      },
-      "godot-dotnet-tools.generateLaunchFile": {
-        "type": "boolean",
-        "default": true,
-        "description": "launch.json file will be generated when true."
-      },
-      "godot-dotnet-tools.generateRulesetFile": {
-        "type": "boolean",
-        "default": true,
-        "description": "ruleset.xml file will be generated when true."
+
+    "configuration": {
+      "title": "godot-dotnet-tools",
+      "properties": {
+        "godot-dotnet-tools.genarateTasksFile": {
+          "type": "boolean",
+          "default": true,
+          "description": "tasks.json file will be generated when true."
+        },
+        "godot-dotnet-tools.generateLaunchFile": {
+          "type": "boolean",
+          "default": true,
+          "description": "launch.json file will be generated when true."
+        },
+        "godot-dotnet-tools.generateRulesetFile": {
+          "type": "boolean",
+          "default": true,
+          "description": "ruleset.xml file will be generated when true."
+        }
       }
     }
   },
+  
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",

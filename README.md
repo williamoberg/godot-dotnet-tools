@@ -36,7 +36,11 @@ Contains the necessary configurations to launch and debug your Godot application
 Contains a build task, using the dotnet CLI to build your project.
 
 ### ruleset.xml:
-Contains rules for the C# code analyzer. This is an optional file that was added due to the default C# rule (CA1050), which warns about encapsulating all classes inside namespaces. In a Godot project this might not necessarily be wanted, but all rules can of course be added or removed at will.
+Contains rules for the C# code analyzer. This is an optional file that was added due to the default C# rule (CA1050), which warns about encapsulating all classes inside namespaces. 
+
+![namespace warning](/images/namespace.png)
+
+In a Godot project this might not necessarily be wanted, and is silenced by default in the added ruleset file.
 [More info](#optional)
 
 ## Configuration

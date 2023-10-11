@@ -1,7 +1,8 @@
 const vscode = require('vscode');
 const csproj = require('./csproj');
 const shared = require('./shared');
-const files = require('./files');
+const fileProvider = require('./fileProvider');
+const fileFinder = require('./fileFinder');
 
 let subscription;
 
@@ -22,12 +23,54 @@ function generateFiles() {
     const generateRulesetFile = configuration.get('generateRulesetFile', true);
 
     // Add tasks file
-    if (generateTasksFile == true) { files.addTasks(); }
-    // Add launch file
-    if (generateLaunchFile == true) { files.addLaunch(); }
-    // Update csproj file
-    if (generateRulesetFile == true) { csproj.update(); }
+    if (generateTasksFile == true) {
+        if (fileFinder.findFile('tasks.json')) {
+            vscode.window
+                .showInformationMessage("tasks.json file already exists in current workspace, would you like to replace it?" ,"Yes", "No")
+                .then(answer => {
+                    if (answer === "Yes") {
+                        fileProvider.addTasks();
+                    }
+                })
+        }
+        else {
+            fileProvider.addTasks();
+        }
+    }
 
+    // Add launch file
+    if (generateLaunchFile == true) {
+        if (fileFinder.findFile('launch.json')) {
+            vscode.window
+                .showInformationMessage("launch.json file already exists in current workspace, would you like to replace it?", "Yes", "No")
+                .then(answer => {
+                    if (answer === "Yes") {
+                        fileProvider.addLaunch();
+                    }
+                })
+        }
+        else {
+            fileProvider.addLaunch();
+        }
+    }
+
+    // Add ruleset & update csproj file
+    if (generateRulesetFile == true) {
+        if (fileFinder.findFile('ruleset.xml')) {
+            vscode.window
+                .showInformationMessage("ruleset.xml file already exists in current workspace, would you like to replace it?", "Yes", "No")
+                .then(answer => {
+                    if (answer === "Yes") {
+                        csproj.update();
+                    }
+                })
+        }
+        else {
+            csproj.update();
+        }
+    }
+
+    // Success
     vscode.window.showInformationMessage('Project files generated.');
 }
 
