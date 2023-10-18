@@ -12,10 +12,10 @@
 - VSCode version requirement fix
 
 ## 0.1.1
-#### Added
+### Added
 - Check for existing tasks, launch & ruleset files in workspace.
 - Prompt to replace existing files if found.
-#### Fixes
+### Fixes
 - Configuration settings are now implemented properly.
 
 ## 0.1.0
