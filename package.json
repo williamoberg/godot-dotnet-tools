@@ -2,7 +2,7 @@
   "name": "godot-dotnet-tools",
   "displayName": "Godot .NET Tools",
   "description": "Generate .NET-related files for your Godot project",
-  "version": "0.1.2",
+  "version": "0.1.21",
   "publisher": "woberg",
   "icon": "images/godot-dotnet-icon.png",
   "repository": {
@@ -30,7 +30,6 @@
   ],
   "main": "./src/extension.js",
   "contributes": {
-
     "commands": [
       {
         "command": "godot-dotnet-tools.generate",
@@ -38,7 +37,6 @@
         "category": "Godot .NET"
       }
     ],
-
     "configuration": {
       "title": "godot-dotnet-tools",
       "properties": {
@@ -60,7 +58,6 @@
       }
     }
   },
-  
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
