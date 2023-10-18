@@ -73,8 +73,8 @@ If the <strong>ruleset.xml</strong> is not desired at all, there is a configurat
 
 Open the debug view in your VSCode workspace and there should be 3 options available. 
 
-- <strong>"Lauch"</strong> 
-- <strong>"Lauch Editor"</strong> 
+- <strong>"Launch"</strong> 
+- <strong>"Launch Editor"</strong> 
 - <strong>"Attach to process"</strong> 
 
 ![debug option](/images/debug.png)
