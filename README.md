@@ -71,13 +71,15 @@ If the <strong>ruleset.xml</strong> is not desired at all, there is a configurat
 
 ## Launching and debugging
 
-Open the debug view in your VSCode workspace and there should be a <strong>"Play"</strong> option available. 
+Open the debug view in your VSCode workspace and there should be 3 options available. 
 
-Pressing "Play" will launch your project.
+- <strong>"Lauch"</strong> 
+- <strong>"Lauch Editor"</strong> 
+- <strong>"Attach to process"</strong> 
 
 ![debug option](/images/debug.png)
 
-You can also set break points, enabling you to step through your code after launching your project.
+You will now be able to set break points, enabling you to step through your code after launching your project.
 
 ![break point](/images/break_point.png)
 

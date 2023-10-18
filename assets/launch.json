@@ -1,24 +1,48 @@
 {
     "version": "0.2.0",
+
+    // Replace {EXECUTABLE PATH} with Godot executable path.
+    // 
+    // Example of possible paths:
+    // C:/Program Files/Godot/Godot.exe
+    // C:/Users/[user]/Downloads/Godot_v4.1-stable_mono_win64/Godot.exe
+    // /Applications/Godot_mono.app/Contents/MacOS/Godot
+    // /Users/[user]/Downloads/Godot_mono.app/Contents/MacOS/Godot
+
     "configurations": [
         {
-            "name": "Play",
+            "name": "Launch",
             "type": "coreclr",
             "request": "launch",
+            "program": "{EXECUTABLE PATH}", // REPLACE
             "preLaunchTask": "build",
-            //
-            // Replace {EXECUTABLE PATH} with Godot executable path.
-            // 
-            // Example of possible paths:
-            // C:/Program Files/Godot/Godot.exe
-            // C:/Users/[user]/Downloads/Godot_v4.1-stable_mono_win64/Godot.exe
-            // /Applications/Godot_mono.app/Contents/MacOS/Godot
-            // /Users/[user]/Downloads/Godot_mono.app/Contents/MacOS/Godot
-            //
-            "program": "{EXECUTABLE PATH}",
-            "args": [],
+            "args": [
+                "--path",
+                "${workspaceRoot}"
+            ],
             "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
             "stopAtEntry": false
+        },
+        {
+            "name": "Launch Editor",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "{EXECUTABLE PATH}", // REPLACE
+            "preLaunchTask": "build",
+            "args": [
+                "--path",
+                "${workspaceRoot}",
+                "--editor"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Attach to Process",
+            "type": "coreclr",
+            "request": "attach"
         }
     ]
 }
