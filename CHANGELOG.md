@@ -1,8 +1,13 @@
 # Change log
 
 ### In progress
-- Exec path as configuration setting
 - Launch specific scene
+
+## 0.3.0
+### Added
+- Configuration setting for specifying executable path
+### Fixes
+- Fixed error when creating .vscode folder 
 
 ## 0.2.0
 ### Fixes

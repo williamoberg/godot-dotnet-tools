@@ -22,6 +22,7 @@ function generateFiles() {
 
     // Get configuration settings
     const configuration = vscode.workspace.getConfiguration('godot-dotnet-tools');
+    const executablePath = configuration.get('executablePath', "{EXECUTABLE PATH}");
     const generateTasksFile = configuration.get('generateTasksFile', true);
     const generateLaunchFile = configuration.get('generateLaunchFile', true);
     const generateRulesetFile = configuration.get('generateRulesetFile', true);
@@ -44,6 +45,9 @@ function generateFiles() {
 
     // Add launch file
     if (generateLaunchFile == true) {
+        // Modify exec path in launch file
+        fileProvider.modifyLaunchFile(executablePath);
+
         if (fileFinder.findFile('launch.json')) {
             vscode.window
                 .showInformationMessage("launch.json file already exists in current workspace, would you like to replace it?", "Yes", "No")

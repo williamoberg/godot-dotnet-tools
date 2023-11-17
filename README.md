@@ -47,9 +47,17 @@ In a Godot project this might not necessarily be wanted, and is silenced by defa
 
 In the <strong>launch.json</strong> file there is some additional configuration needed. 
 
-You will have to edit the <code>"program"</code> property value to the path of your Godot executable.
-Simply replace <code>{EXECUTABLE PATH}</code> with the path to your Godot executable.
+You can set the path to your Godot executable in the configuration settings for the extension and the path will automatically be added to the <strong>launch.json</strong> file every time you generate your files.
 
+![settings](/images/settings.png)
+
+Alternatively, you can edit the setting in your <strong>settings.json</strong> file:
+
+![settings.json](/images/settingsjson.png)
+
+You can also edit the <strong>launch.json</strong> file manually every time you add it. You can do this by changing the <code>"program"</code> property value to the path of your Godot executable.
+
+Simply replace <code>{EXECUTABLE PATH}</code> with the path to your Godot executable.
 
 ![launch.json](/images/launch.png)
 
@@ -86,7 +94,9 @@ You will now be able to set break points, enabling you to step through your code
 
 ## Extension Settings
 
-There are 3 available configuration settings for the extension which enable you to choose what files are generated:
+There are 4 available configuration settings for the extension which enable you to set your Godot executable path and choose what files are generated:
+
+- <code>"godot-dotnet-tools.executablePath"</code> 
 
 - <code>"godot-dotnet-tools.generateTasksFile"</code> 
 
@@ -94,6 +104,6 @@ There are 3 available configuration settings for the extension which enable you 
 
 - <code>"godot-dotnet-tools.generateRulesetFile"</code>
 
-All settings are set to <code>true</code> by default.
+These configurations are available in the settings under the <strong>extensions/Godot .NET tab.</strong>
 
-To override these settings, you can add them to your <strong>settings.json</strong> file set them to false.
+You can also add them in your <strong>settings.json</strong> file.

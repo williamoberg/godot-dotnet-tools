@@ -4,10 +4,10 @@ const path = require('path');
 
 function addFolder(folderName) {
     const folderPath = path.join(shared.workspacePath, folderName);
-    const folders = fs.readdirSync(shared.workspacePath);
+    const folders = fs.readdirSync(shared.workspacePath, 'utf-8');
 
-    for (const name in folders) {
-        if (path.basename(name) == ".vscode") {
+    for (let i = 0; i < folders.length; i++) {
+        if (folders[i] == '.vscode') {
             return;
         }
     }
@@ -74,9 +74,33 @@ function addRuleset() {
     }
 }
 
+function modifyLaunchFile(path) {
+    try {
+        // Read the JSON file
+        const fileRead = fs.readFileSync(shared.launchPath, 'utf-8');
+        const launchFile = JSON.parse(fileRead);
+
+        // Update the program paths in the configurations array
+        if (launchFile && launchFile.configurations && launchFile.configurations.length >= 2) {
+            launchFile.configurations[0].program = path;
+            launchFile.configurations[1].program = path;
+
+            // Write the updated JSON string back to the file
+            fs.writeFileSync(shared.launchPath, JSON.stringify(launchFile, null, 2));
+
+            console.log('JSON file updated successfully.');
+        } else {
+            console.error('Invalid JSON file format or missing configurations.');
+        }
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+}
+
 module.exports = {
     addTasks,
     addLaunch,
     addRuleset,
-    addFolder
+    addFolder,
+    modifyLaunchFile
 }
