@@ -1,12 +1,13 @@
 # Change log
 
 ### In progress
+- Exec path as configuration setting
 - Launch specific scene
 
-## 0.1.3
+## 0.2.0
 ### Fixes
 - Automatically creating .vscode folder
-- Properly named confuguration settings
+- Properly named configuration settings
 
 ## 0.1.2
 ### Added

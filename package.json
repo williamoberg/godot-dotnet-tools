@@ -2,7 +2,7 @@
   "name": "godot-dotnet-tools",
   "displayName": "Godot .NET Tools",
   "description": "Generate .NET-related files for your Godot project",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "publisher": "woberg",
   "icon": "images/godot-dotnet-icon.png",
   "repository": {
