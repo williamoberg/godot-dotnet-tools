@@ -2,6 +2,18 @@ const fs = require('fs');
 const shared = require('./shared');
 const path = require('path');
 
+function addFolder(folderName) {
+    const folderPath = path.join(shared.workspacePath, folderName);
+    const folders = fs.readdirSync(shared.workspacePath);
+
+    for (const name in folders) {
+        if (path.basename(name) == ".vscode") {
+            return;
+        }
+    }
+    fs.mkdirSync(folderPath);
+}
+
 function addTasks() {
     try {
         const xmlFileName = path.basename(shared.tasksPath);
@@ -65,5 +77,6 @@ function addRuleset() {
 module.exports = {
     addTasks,
     addLaunch,
-    addRuleset
+    addRuleset,
+    addFolder
 }

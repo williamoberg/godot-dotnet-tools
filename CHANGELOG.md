@@ -3,6 +3,11 @@
 ### In progress
 - Launch specific scene
 
+## 0.1.3
+### Fixes
+- Automatically creating .vscode folder
+- Properly named confuguration settings
+
 ## 0.1.2
 ### Added
 - More debugging options:

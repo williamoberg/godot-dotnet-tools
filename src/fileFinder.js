@@ -2,7 +2,6 @@ const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
 
-
 function findCsprojFile() {
     const workspaceFolders = vscode.workspace.workspaceFolders;
     // Look for csproj file in workspace folders
@@ -18,7 +17,7 @@ function findCsprojFile() {
 
 function findFile(fileName) {
     const workspaceFolders = vscode.workspace.workspaceFolders;
-    // Look for tasks.json file in workspace folders
+    // Look for file in workspace folders
     for (const folder of workspaceFolders) {
         const tasksFile = findFilePath(folder.uri.fsPath, fileName);
         if (tasksFile) {

@@ -16,6 +16,10 @@ function generateFiles() {
     if (shared.updatePaths() == false) {
         return;
     }
+    
+    // Create .vscode folder if it does not exist
+    fileProvider.addFolder(".vscode");
+
     // Get configuration settings
     const configuration = vscode.workspace.getConfiguration('godot-dotnet-tools');
     const generateTasksFile = configuration.get('generateTasksFile', true);
