@@ -27,7 +27,6 @@ function findFile(fileName) {
     return false;
 }
 
-
 function findFilePath(rootPath, fileName) {
     function walkSync(currentDirPath) {
         const files = fs.readdirSync(currentDirPath);
@@ -80,7 +79,12 @@ function findFileWithExtension(rootPath, extension) {
     return walkSync(rootPath);
 }
 
+function findExecutable(path) {
+    return fs.existsSync(path);
+}
+
 module.exports = {
     findCsprojFile,
-    findFile
+    findFile,
+    findExecutable
 }

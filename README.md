@@ -25,18 +25,23 @@ Open the <strong>Command Palette (Ctrl + Shift + P) </strong> and select:
 
 ![cmd palette command](/images/cmd_palette.png)
 
-In it's default configuration, the extension will generate 3 files inside the <strong>.vscode</strong> folder in the current workspace.
+If the path to your Godot executable is not set in the user settings ([More info](#configuration)), you will be asked to select the path to your Godot executable in a file dialog when generating the files.
+
+#
+
+The extension will generate 3 files inside the <strong>.vscode</strong> folder in the current workspace.
 
 ![files](/images/files.png)
 
 ### launch.json:
-Contains the necessary configurations to launch and debug your Godot application from inside VSCode. [More info](#configuration)
+- Contains the necessary configurations to launch and debug your Godot application from inside VSCode. [More info](#configuration)
 
 ### tasks.json:
-Contains a build task, using the dotnet CLI to build your project.
+- Contains a build task, using the dotnet CLI to build your project.
 
 ### ruleset.xml:
-Contains rules for the C# code analyzer. [More info](#optional)
+- Contains rules for the C# code analyzer. 
+[More info](#optional)
 
 
 ## Configuration

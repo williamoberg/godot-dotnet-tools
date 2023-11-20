@@ -3,6 +3,10 @@
 ### In progress
 - Launch specific scene
 
+## 0.5.0
+### Added
+- Choose executable path via file dialog when path is not set in settings.
+
 ## 0.4.0
 ### Added
 - launch.json file now get executable path from extension settings
