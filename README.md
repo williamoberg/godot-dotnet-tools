@@ -36,39 +36,32 @@ Contains the necessary configurations to launch and debug your Godot application
 Contains a build task, using the dotnet CLI to build your project.
 
 ### ruleset.xml:
-Contains rules for the C# code analyzer. This is an optional file that was added due to the default C# rule (CA1050), which warns about encapsulating all classes inside namespaces. 
+Contains rules for the C# code analyzer. [More info](#optional)
 
-![namespace warning](/images/namespace.png)
-
-In a Godot project this might not necessarily be wanted, and is silenced by default in the added ruleset file.
-[More info](#optional)
 
 ## Configuration
 
-In the <strong>launch.json</strong> file there is some additional configuration needed. 
-
-You can set the path to your Godot executable in the configuration settings for the extension and the path will automatically be added to the <strong>launch.json</strong> file every time you generate your files.
+To be able to launch your project, you first need to set the path to your Godot executable in the   user settings. The settings can be found under <strong>Extensions/Godot .Net</strong>.
 
 ![settings](/images/settings.png)
 
-Alternatively, you can edit the setting in your <strong>settings.json</strong> file:
+Alternatively, you can set the executable path in your <strong>settings.json</strong> file:
 
 ![settings.json](/images/settingsjson.png)
 
-You can also edit the <strong>launch.json</strong> file manually every time you add it. You can do this by changing the <code>"program"</code> property value to the path of your Godot executable.
+## Optional
 
-Simply replace <code>{EXECUTABLE PATH}</code> with the path to your Godot executable.
-
-![launch.json](/images/launch.png)
-
-
-### Optional
-
-The <strong>ruleset.xml</strong> file contains one rule ID (CA1050). This rule warns about encapsulating all your classes inside namespaces and is silenced by default. This is optional of course and can be removed if so desired.
+The generated <strong>ruleset.xml</strong> file contains one rule ID: <code>(CA1050)</code>.
 
 ![ruleset](/images/ruleset.png)
 
-The ruleset is also added to the <strong>.csproj</strong> file and if the <strong>ruleset.xml</strong> file is removed, the <strong>.csproj</strong> file will need to be edited to resolve any issues related to omnisharp. 
+This rule warns about encapsulating all your classes inside namespaces. In a Godot project this might not necessarily be wanted, so the rule is silenced by default.
+
+![namespace warning](/images/namespace.png)
+
+For the ruleset to work, it is also added to the <strong>.csproj</strong> file.
+
+The <strong>ruleset.xml</strong> file is of course not necessary and can be deleted if it's not wanted, but if it is, the <strong>.csproj</strong> file will need to be edited to resolve any issues related to omnisharp. 
 
 Simply remove the line shown below.
 
@@ -79,7 +72,7 @@ If the <strong>ruleset.xml</strong> is not desired at all, there is a configurat
 
 ## Launching and debugging
 
-Open the debug view in your VSCode workspace and there should be 3 options available. 
+Open the debug view in your VSCode workspace and there should now be 3 options available. 
 
 - <strong>"Launch"</strong> 
 - <strong>"Launch Editor"</strong> 
@@ -104,6 +97,6 @@ There are 4 available configuration settings for the extension which enable you 
 
 - <code>"godot-dotnet-tools.generateRulesetFile"</code>
 
-These configurations are available in the settings under the <strong>extensions/Godot .NET tab.</strong>
+These configurations are available in the user settings under <strong>Extensions/Godot .NET.</strong>
 
-You can also add them in your <strong>settings.json</strong> file.
+You can also add and edit them in your <strong>settings.json</strong> file.

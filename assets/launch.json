@@ -5,7 +5,7 @@
       "name": "Launch",
       "type": "coreclr",
       "request": "launch",
-      "program": "{EXECUTABLE PATH}",
+      "program": "${config:godot-dotnet-tools.executablePath}",
       "preLaunchTask": "build",
       "args": [
         "--path",
@@ -19,7 +19,7 @@
       "name": "Launch Editor",
       "type": "coreclr",
       "request": "launch",
-      "program": "{EXECUTABLE PATH}",
+      "program": "${config:godot-dotnet-tools.executablePath}",
       "preLaunchTask": "build",
       "args": [
         "--path",

@@ -2,7 +2,7 @@
   "name": "godot-dotnet-tools",
   "displayName": "Godot .NET Tools",
   "description": "Generate .NET-related files for your Godot project",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publisher": "woberg",
   "icon": "images/godot-dotnet-icon.png",
   "repository": {
@@ -39,6 +39,11 @@
     "configuration": {
       "title": "Godot .NET",
       "properties": {
+        "godot-dotnet-tools.executablePath" : {
+          "type": "string",
+          "default": "Insert path to your Godot executable...",
+          "description": "Full path to Godot executable file."
+        },
         "godot-dotnet-tools.genarateTasksFile": {
           "type": "boolean",
           "default": true,
@@ -53,11 +58,6 @@
           "type": "boolean",
           "default": true,
           "description": "ruleset.xml file will be generated when true."
-        },
-        "godot-dotnet-tools.executablePath" : {
-          "type": "string",
-          "default": "{EXECUTABLE PATH}",
-          "description": "Full path to Godot executable file."
         }
       }
     }

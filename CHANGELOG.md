@@ -3,6 +3,10 @@
 ### In progress
 - Launch specific scene
 
+## 0.4.0
+### Added
+- launch.json file now get executable path from extension settings
+
 ## 0.3.0
 ### Added
 - Configuration setting for specifying executable path
