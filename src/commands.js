@@ -55,8 +55,7 @@ function generateFiles() {
                 title: 'Select Godot Executable File', // Title of the dialog
                 filters: {
                     // Specify file filters if needed
-                    'Executable': ['exe', 'bin', 'app', 'cmd', 'sh', 'command', ''],
-                    'All files': ['*'],
+                    'All files': ['*']
                 },
                 defaultUri: homeDir, // Default folder to open
             };
